@@ -13,14 +13,13 @@ Desarrollar habilidades reales en detección, análisis y respuesta
 a incidentes de seguridad, con foco en entornos empresariales reales.
 Próximo ingreso a CSIRT Comunitario.
 
-## Certificaciones en curso
-- CompTIA Security+ (SY0-701)
+## Certificaciones
 - Fortinet FCF — Fundamentals
-- Fortinet FCA — Associate
+
 
 ##  Stack técnico
 - SIEM: Wazuh
-- OS: Kali Linux, Ubuntu, Windows 11
+- OS: Kali Linux, Ubuntu, Windows
 - Redes: Wireshark, Nmap
 - Frameworks: MITRE ATT&CK, Cyber Kill Chain, PICERL
 
