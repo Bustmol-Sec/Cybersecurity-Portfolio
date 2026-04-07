@@ -56,7 +56,8 @@ File:         C:\Windows\System32\Drivers\etc\HOSTS
 Title:        Windows Malware: Anti-virus site on the hosts file
 ```
 
-> 📸 **[IMAGEN 1: Captura del dashboard Wazuh mostrando la alerta Rule ID 513]**
+> <img width="1335" height="347" alt="image" src="https://github.com/user-attachments/assets/b3cd2a3a-291a-45c5-8bdf-38af7ab9938c" />
+
 
 ---
 
@@ -69,7 +70,8 @@ Entrada IOC:   0.0.0.1    mssplus.mcafee.com
 Impacto:       McAfee bloqueado — sin comunicación con servidores
 ```
 
-> 📸 **[IMAGEN 2: Contenido del archivo HOSTS mostrando la línea maliciosa al final]**
+<img width="781" height="702" alt="image" src="https://github.com/user-attachments/assets/ce7a10b3-97b1-4888-ac67-3e9fd58aa119" />
+
 
 ---
 
@@ -84,23 +86,34 @@ Detecciones VT: 2/72
 Community Score: -28
 ```
 
-> 📸 **[IMAGEN 3: Resultado de VirusTotal mostrando detecciones y behavior tags]**
+<img width="1568" height="542" alt="image" src="https://github.com/user-attachments/assets/281e6668-8ea4-4640-890d-dd1044ded884" />
+
+
+<img width="1568" height="700" alt="image" src="https://github.com/user-attachments/assets/89b6d9af-8202-4ef9-9bfa-ef5c37ea7861" />
+
 
 ---
 
 ### Clasificación MITRE ATT&CK
 
-| Táctica | Técnica | ID | Descripción |
-|---|---|---|---|
-| Defense Evasion | Masquerading | T1036 | Se disfraza como updater legítimo |
-| Defense Evasion | Virtualization/Sandbox Evasion | T1497 | Detecta entornos de análisis |
-| Persistence | Boot/Logon Autostart | T1547 | Persiste mediante tareas programadas |
-| Persistence | Scheduled Task/Job | T1053 | Crea tareas programadas camufladas |
-| Privilege Escalation | Process Injection | T1055 | Inyección en procesos del sistema |
-| Credential Access | Input Capture | T1056 | Posible captura de credenciales |
-| Defense Evasion | Disable Security Tools | T1562 | Bloquea McAfee via HOSTS |
 
-> 📸 **[IMAGEN 4: Pestaña Behavior de VirusTotal mostrando técnicas MITRE]**
+| Táctica | Técnica | ID | Evidencia |
+|---|---|---|---|
+| Execution | Scheduled Task/Job | T1053 | Creación de tareas update-S-1-5-21 y update-sys |
+| Persistence | Scheduled Task/Job | T1053 | Persiste en el sistema tras reinicios |
+| Persistence | Boot/Logon Autostart Execution | T1547 | Se ejecuta automáticamente al iniciar sesión |
+| Defense Evasion | Masquerading | T1036 | Se camufla como updater legítimo de LightShot |
+| Defense Evasion | Impair Defenses: Disable or Modify Tools | T1562.001 | Bloquea McAfee modificando el archivo HOSTS — agrega `0.0.0.1 mssplus.mcafee.com` |
+| Defense Evasion | Virtualization/Sandbox Evasion | T1497 | detect-debug-environment confirmado en análisis VT |
+| Credential Access | Input Capture | T1056 | Comportamiento de keylogger confirmado en sandbox VT |
+| Discovery | System Information Discovery | T1082 | Recopilación de info del sistema confirmada en VT |
+| Discovery | File and Directory Discovery | T1083 | Escaneo de archivos del sistema confirmado en VT |
+| Collection | Input Capture | T1056 | Recolección de input del usuario |
+| Command and Control | Application Layer Protocol | T1071 | 193 IPs contactadas confirmadas en análisis VT |
+
+<img width="1568" height="655" alt="image" src="https://github.com/user-attachments/assets/f35646d4-8d35-42cc-812d-2b90fb38f6b2" />
+<img width="1401" height="698" alt="image" src="https://github.com/user-attachments/assets/fe8e754d-ad8a-4a19-a970-352087902735" />
+
 
 ---
 
@@ -118,7 +131,8 @@ Tarea 2: update-sys
          Frecuencia: Diaria a las 17:19
 ```
 
-> 📸 **[IMAGEN 5: Programador de tareas mostrando las tareas update-S-1 y update-sys]**
+<img width="1324" height="303" alt="image" src="https://github.com/user-attachments/assets/f67e9e12-71c6-4326-bc0b-c3d3f7c17f5e" />
+
 
 ---
 
@@ -134,14 +148,18 @@ TJprojMain.exe    → 63/68 detecciones ← Componente de TLauncher
 
 Malwarebytes confirmó la presencia del instalador:
 ```
-Archivo:  C:\USERS\MARTA MOLINA\DOWNLOADS\TLAUNCHER-INSTALLER-1.8.8.EXE
+Archivo:  C:\USERS\User\DOWNLOADS\TLAUNCHER-INSTALLER-1.8.8.EXE
 Tipo:     PUP.Optional.BundleInstaller
 Hash:     5CBAE5501E6CC897884DC74BC7F563DE5E9D61F15AC6A3F082301344EE007FE7
 ```
 
-> 📸 **[IMAGEN 6: Resultado de Malwarebytes mostrando los 4 items detectados]**
+<img width="1247" height="884" alt="image" src="https://github.com/user-attachments/assets/b4f19f71-eecc-4bb6-87fb-f085d8248ae0" />
 
-> 📸 **[IMAGEN 7: Execution Parents en VirusTotal mostrando TJprojMain.exe]**
+
+
+
+<img width="838" height="403" alt="image" src="https://github.com/user-attachments/assets/22562306-149f-4c6d-96c1-84021707d3bc" />
+
 
 ---
 
@@ -174,20 +192,21 @@ Wazuh detecta la modificación del HOSTS ✅
 ```
 1. PUP.Optional.Softonic
    └── ZaraRadio-1.6.6-installer_II5-GZ1.exe
-   └── C:\USERS\MARTA MOLINA\DOWNLOADS\
+   └── C:\USERS\User\DOWNLOADS\
 
 2. PUP.Optional.BundleInstaller
    └── DTLite1230-2352.exe (Daemon Tools)
-   └── C:\USERS\MARTA MOLINA\DOWNLOADS\
+   └── C:\USERS\User\DOWNLOADS\
 
 3. PUP.Optional.BundleInstaller
    └── TLauncher-Installer-1.8.8.exe ← VECTOR PRINCIPAL
-   └── C:\USERS\MARTA MOLINA\DOWNLOADS\
+   └── C:\USERS\User\DOWNLOADS\
 
 4. PUP.Optional.BundleInstaller
    └── ZaraRadio-1.6.6-installer_1W-9JA1.exe
-   └── C:\USERS\MARTA MOLINA\DOWNLOADS\
+   └── C:\USERS\User\DOWNLOADS\
 ```
+<img width="1600" height="211" alt="image" src="https://github.com/user-attachments/assets/8a9c6a8b-0b83-4d31-a3a6-f8fc42ee22f3" />
 
 ---
 
