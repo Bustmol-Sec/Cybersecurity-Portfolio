@@ -1,6 +1,8 @@
 #  Reporte de Incidente de Seguridad — INC-001
 
- ## 1. ENCABEZADO
+---
+
+## 1. ENCABEZADO
 
 | Campo | Detalle |
 |---|---|
@@ -9,16 +11,18 @@
 | **Fecha de detección** | 06/04/2026 17:47 hs |
 | **Fecha de cierre** | 06/04/2026 21:30 hs |
 | **Analista** | Andres Busto |
-| **Severidad** | Alta |
+| **Severidad** |  Alta |
 | **Estado** | Contenido — Limpieza en proceso |
 | **Plataforma de detección** | Wazuh SIEM — Rule ID 513 |
 | **Agente afectado** | MartaTest — Windows 11 (192.168.XXX.51) |
 
+---
 
 ## 2. RESUMEN EJECUTIVO
 
 El día 06/04/2026, el SIEM Wazuh detectó una alerta de nivel 9 clasificada como "Windows malware detected" en el agente MartaTest (Windows 11). La investigación reveló que el archivo HOSTS del sistema había sido modificado para bloquear la comunicación del antivirus McAfee con sus servidores de actualización. El análisis forense posterior identificó un ejecutable malicioso (Updater.exe) instalado como parte de un bundle de TLauncher, con comportamiento asociado a técnicas de evasión de defensas, persistencia y posible captura de credenciales. Se procedió a contener la amenaza mediante cuarentena con Malwarebytes y eliminación de componentes maliciosos.
 
+---
 
 ## 3. LÍNEA DE TIEMPO
 
@@ -50,8 +54,11 @@ Level:        9 (Alto)
 Module:       rootcheck
 File:         C:\Windows\System32\Drivers\etc\HOSTS
 Title:        Windows Malware: Anti-virus site on the hosts file
+```
 
-(imagen de la alerta)
+> 📸 **[IMAGEN 1: Captura del dashboard Wazuh mostrando la alerta Rule ID 513]**
+
+---
 
 ### IOC — Indicadores de Compromiso
 
@@ -287,11 +294,6 @@ La infección se originó por la descarga e instalación de **TLauncher**, un la
 
 ---
 
-*Reporte generado por: Andres Busto *
+*Reporte generado por: Andres Busto*
 *Entorno: Laboratorio real — Wazuh + Windows 11*
 *Fecha: 06/04/2026*
-
-
-
-
-
